@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Job {
@@ -27,7 +28,7 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
-   // Custom Equals and Hashcode:
+   // Custom toString, Equals, and Hashcode methods:
 
     @Override
     public boolean equals(Object o) {
@@ -40,6 +41,38 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    HashMap<String, String> reference = new HashMap<>();
+
+    @Override
+    public String toString() {
+         if (this.name.isEmpty() && this.employer.getValue().isEmpty() && this.location.getValue().isEmpty() && this.positionType.getValue().isEmpty() && this.coreCompetency.getValue().isEmpty()) {
+             return "OOPS! This job does not seem to exist.";
+         } else {
+             if (this.name.isEmpty()) {
+                 setName("Data not available");
+             }
+             if (this.employer.getValue().isEmpty()) {
+                 setEmployer(new Employer("Data not available"));
+             }
+             if (this.location.getValue().isEmpty()) {
+                 setLocation(new Location("Data not available"));
+             }
+             if (this.positionType.getValue().isEmpty()) {
+                 setPositionType(new PositionType("Data not available"));
+             }
+             if (this.coreCompetency.getValue().isEmpty()) {
+                 setCoreCompetency(new CoreCompetency("Data not available"));
+             }
+         }
+            return System.lineSeparator()+
+                    "ID: "+this.id+System.lineSeparator()+
+                    "Name: "+this.name+System.lineSeparator()+
+                    "Employer: "+this.employer+System.lineSeparator()+
+                    "Location: "+this.location+System.lineSeparator()+
+                    "Position Type: "+this.positionType+System.lineSeparator()+
+                    "Core Competency: "+this.coreCompetency+System.lineSeparator();
     }
 
     // Getters and Setters:

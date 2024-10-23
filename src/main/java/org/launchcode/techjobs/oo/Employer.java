@@ -2,19 +2,9 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class Employer {
-
-    private int id;
-    private static int nextId = 1;
-    private String value;
-
-    public Employer() {
-        id = nextId;
-        nextId++;
-    }
+public class Employer extends JobField {
 
     public Employer(String aValue) {
-        this();
         this.value = aValue;
     }
 
