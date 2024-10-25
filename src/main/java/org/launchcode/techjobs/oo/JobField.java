@@ -12,16 +12,20 @@ public abstract class JobField {
         nextId++;
     }
 
+    public JobField(String aValue) {
+        this();
+        this.value = aValue;
+    }
     @Override
     public String toString() {
         return value;
     }
 
     @Override
-    public boolean equals(Object o) {  // Two objects are equal if they have the same id.
+    public boolean equals(Object o) {  // Two objects are equal if they have the same id. (JobField) qualifier ensures that the getId method can be run.
         if (this == o) return true;
-        if (!(o instanceof Employer employer)) return false;
-        return getId() == employer.getId();
+        if (!(o instanceof JobField)) return false;
+        return getId() == ((JobField) o).getId();
     }
 
     @Override
